@@ -63,7 +63,7 @@ Promo 20% off
 Title the lightbox:
 
 ```
-“Success.” 
+Success
 ```
 
 Change main text to “Upload Successful!”, change the colors of the text and overlay background to fit your brand.
@@ -86,7 +86,7 @@ We will cover the design and code of this page later. For now, you just need to 
 
 ## Step 6 - Code Coupons Page
 
-We will cover the design and code of this page later. For now, you just need to create the page.
+Copy the code exactly from [Coupons](Coupons) and paste it in SITE code for the page "Coupons"
 
 ## Step 6 - Design Coupon Upload Page
 
@@ -95,7 +95,7 @@ We will cover the design and code of this page later. For now, you just need to 
 
 ## Step 6 - Code Coupon Upload Page
 
-We will cover the design and code of this page later. For now, you just need to create the page.
+Copy the code exactly from [Coupon-Upload](Coupon-Upload) and paste it in SITE code for the page "Coupon Upload"
 
 ## Save and Publish
 
