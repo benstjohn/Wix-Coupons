@@ -48,15 +48,37 @@ Give an example
 
 ## Step 2 - Create Coupons Page
 
-We will cover the design and code of this page later. For now, you just need to create the page.
+We will cover the design and code of this page later. For now, you just need to create the page. 
+
+If a page doesn’t exist yet for coupons and promotions. Create new page for coupons - title “Coupons”
 
 ## Step 3 - Create Lightbox "Success"
 
-We will cover the design and code of this page later. For now, you just need to create the page.
+Create a lightbox using the side toolbar. Use the template:
+
+```
+Promo 20% off
+```
+
+Title the lightbox:
+
+```
+“Success.” 
+```
+
+Change main text to “Upload Successful!”, change the colors of the text and overlay background to fit your brand.
+
+### Close Button
+Rename the existing button to "Close", and link it to the Coupons/Promotions page.
+
+### Settings
+Change settings of lightbox so it does NOT automatically appear on page load.
 
 ## Step 4 - Create Coupon Upload Page
 
 We will cover the design and code of this page later. For now, you just need to create the page.
+
+Create new page called “Coupon Upload”, and make it password protected - set the password to a memorable password. Also, set the page to “Hidden” and disable it from showing up in SEO.
 
 ## Step 5 - Design Coupons Page
 
@@ -81,8 +103,8 @@ Save your code - and then publish it. :)
 
 ## Built With
 
-* [Wix Code](http://www.dropwizard.io/1.0.2/docs/) - The framework used
-* [Javascript](https://maven.apache.org/) - Programming Language
+* [Wix Code](https://www.wix.com/code/home) - The framework used
+* [Javascript](https://www.javascript.com/) - Programming Language
 
 
 ## Authors
