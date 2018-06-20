@@ -1,0 +1,63 @@
+//Code created by Ben St. John @Authoritek
+//June 7, 2018
+//Backend code to be used on page where coupons will be displaye
+import wixData from 'wix-data';
+import wixWindow from 'wix-window';
+
+
+$w.onReady(function () {
+    removeExpired();
+});
+
+//function checks all existing coupons expiration dates
+//removes any coupon that has expiration date 
+// that is past current date
+export function removeExpired() {
+ 	 $w("#dataset1").onReady( () => {
+ 	   let itemIndex = $w("#dataset1").getCurrentItemIndex();
+ 	   let hasNext = $w("#dataset1").hasNext(); // true
+            let location = $w("#dataset1").getCurrentItem();
+            let count = $w("#dataset1").getTotalCount();
+            let curDate = new Date();
+        console.log("Size of the Dataset: ", count);
+
+        for(var i = 0; i < count; i++){
+
+        $w("#dataset1").getItems(i,1)
+     	 .then( (result) => {
+     	   let items = result.items;
+     	   let expiration = items[0].expiration;
+     	   let totalCount = result.totalCount;
+     	   let offset = result.offset;
+            let id = items[0]._id;
+     	   console.log("Item Index: ", offset);
+     	   console.log("Items here: ", expiration);
+                console.log("ID: ", id);
+                //if the item is expired
+                if(curDate > expiration){
+
+                    let toUpdate = {
+                        "_id": id,
+                        "expired": true
+                    };
+                    
+                    wixData.update("Coupons", toUpdate)
+                        .then( (results) => {
+                            let item = results; //see item below
+                            console.log("finished");
+                        } )
+                        .catch( (err) => {
+                            let errorMsg = err;
+                        } );
+                }
+
+                
+     	 } ) // End getItems
+     	 .catch( (err) => {
+     	   let errMsg = err.message;
+     	   let errCode = err.code;
+     	 } ); //End Catch Error
+        } // End For Loop
+
+ 	 }); // End onReady()
+} // End Function
