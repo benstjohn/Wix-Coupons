@@ -1,0 +1,72 @@
+//Code created by Ben St. John @Authoritek
+// June 6, 2018
+//Code should be placed in backend of page where user uploads coupon
+import wixData from 'wix-data';
+import wixWindow from 'wix-window';
+
+let file_1 = "";
+
+function checkUpload1(_callback){
+        if($w("#uploadButton1").value.length > 0) {
+            $w("#uploadButton1").startUpload()
+                .then( (uploadedFile) => {
+                file_1 = uploadedFile.url;
+                _callback();
+                })
+                .catch( (uploadError) => {
+                });
+            }else{
+            _callback();
+        }
+    }
+
+function addCoupon(){
+    let date = $w("#datePicker1").value;
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let dateStr =  month + "/" + day + "/" +year;
+    let expiration = ($w("#datePicker1").value);
+    expiration.setDate(expiration.getDate() + 1);
+
+    let toInsert = {
+        "expiration":  expiration ,
+        "posted":   new Date(),
+        "coupon":     file_1,
+        "title":  $w("#input1").value,
+        "displayEx": dateStr,
+        "displayed": true
+    };
+                
+    wixData.insert("Coupons", toInsert)
+    .then( (results) => {
+        let item = results; //see item below
+        wixWindow.openLightbox("Success");
+        console.log(item);
+    } )
+    .catch( (err) => {
+        let errorMsg = err;
+        console.log(errorMsg);
+    } );
+}
+
+$w.onReady(function () {
+    $w("#button3").disable();
+    
+    
+    $w("#input1").onChange( () => {
+        if ($w("#input1").value.length > 0) {
+            console.log("hello");
+            $w("#button3").enable();
+        }else {
+            $w("#button3").disable();
+        }
+    });
+
+   $w("#button3").onClick( (event, $w) => {
+        checkUpload1(function(){
+            addCoupon();
+        });
+    });
+        
+});
